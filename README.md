@@ -13,13 +13,13 @@ reboot
 
 COMO CORRER EL SCRIPT
 puedes ubicar el script en directorio o ruta:
-root/
+/root
 
 DAR PERMISOS DE EJECUCIÓN:
 chmod +x install-asterisk.sh
 ./install-asterisk
 
-y eso esto, correlo como root
+No olvidar que todo esto se debe correr como root.
 
 correo: jsd@dextre.xyz  ,  dextre1481@gmail.com
 
