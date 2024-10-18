@@ -33,10 +33,9 @@ cd libpri-1.6.*/
 make
 make install
 
-cd /usr/src
-
-cd asterisk-21.4.*/
+cd /usr/src/asterisk-21.*.*/
 ./configure
+
 #make menuselect
 
 # Seleccionamos los módulos automáticamente
