@@ -11,7 +11,7 @@ wget https://downloads.asterisk.org/pub/telephony/asterisk/asterisk-21-current.t
 
 tar -zxf asterisk-21-current.tar.gz
 
-cd asterisk-21.*/contrib/scripts/
+cd /usr/src/asterisk-21.*.*/contrib/scripts/
 
 ./install_prereq install
 
