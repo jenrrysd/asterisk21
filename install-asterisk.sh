@@ -1,5 +1,8 @@
 #!/bin/bash
 
+## este script corre sobre debian12 y debeian13 en modo root
+
+apt-get update -y
 apt-get install linux-headers-$(uname -r) -y
 apt-get install wget vim -y
 cd /usr/src
@@ -36,22 +39,24 @@ make install
 cd /usr/src/asterisk-21.*.*/
 ./configure
 
-#make menuselect
+# Paso 2: Habilitar módulos específicos automáticamente
+menuselect/menuselect \
+    --enable chan_ooh323 \
+    --enable CORE-SOUNDS-ES-GSM \
+    --enable codec_opus \
+    --enable format_mp3 \
+    --enable app_meetme \
+    --enable res_http_websocket \
+    menuselect.makeopts
 
-# Seleccionamos los módulos automáticamente
-menuselect/menuselect --enable chan_ooh323 menuselect.makeopts
-menuselect/menuselect --enable CORE-SOUNDS-ES-GSM menuselect.makeopts
-
-#### marcar los siguinentes para su instalación
-#Add-ons (See README-addons.txt) > chan_ooh323
-#Core Sound Packages > CORE-SOUNDS-ES-GSM
-#Save & Exit
-
-make
+# Paso 3: Compilación e instalación
+make -j$(nproc)
 make install
 make samples
 make config
 
-asterisk -v
+systemctl start asterisk
+systemctl enable asterisk
+
 asterisk -rv
 
